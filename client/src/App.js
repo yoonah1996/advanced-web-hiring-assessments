@@ -32,7 +32,6 @@ class App extends React.Component {
             <Route
               path="/"
               render={() => {
-                // Redirect 사용법 참고
                 if (isLogin) {
                   return <Redirect to="/mypage" />;
                 }
