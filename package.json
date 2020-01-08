@@ -1,13 +1,14 @@
 {
-  "name": "im-advanced-web-HA",
+  "name": "im-advanced-web-hiring-assessments",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
   "scripts": {
     "build": "webpack",
-    "test": "NODE_ENV=test jest",
+    "test": "NODE_ENV=test jest --json --outputFile=results.json",
     "client-start": "webpack-dev-server --hot --open",
-    "server-start": "node server/index.js"
+    "server-start": "nodemon server/index.js",
+    "submit": "node .airci/submit.js"
   },
   "keywords": [],
   "author": "",
@@ -15,8 +16,10 @@
   "devDependencies": {
     "@babel/core": "^7.7.7",
     "@babel/plugin-proposal-class-properties": "^7.7.4",
+    "@babel/plugin-transform-runtime": "^7.7.6",
     "@babel/preset-env": "^7.7.7",
     "@babel/preset-react": "^7.7.4",
+    "@babel/runtime": "^7.7.7",
     "babel-loader": "^8.0.6",
     "babel-polyfill": "^6.26.0",
     "clean-webpack-plugin": "^3.0.0",
@@ -27,7 +30,9 @@
     "mini-css-extract-plugin": "^0.9.0",
     "node-fetch": "^2.6.0",
     "node-sass": "^4.13.0",
+    "nodemon": "^2.0.2",
     "sass-loader": "^8.0.0",
+    "sqlite3": "^4.1.1",
     "style-loader": "^1.1.2",
     "supertest": "^4.0.2",
     "webpack": "^4.41.5",
@@ -37,11 +42,11 @@
   "dependencies": {
     "@material-ui/core": "^4.8.2",
     "@material-ui/icons": "^4.5.1",
+    "colors": "^1.4.0",
     "express": "^4.17.1",
     "react": "^16.12.0",
     "react-dom": "^16.12.0",
     "react-router-dom": "^5.1.2",
-    "sequelize": "^5.21.3",
-    "sqlite3": "^4.1.1"
+    "sequelize": "^5.21.3"
   }
 }

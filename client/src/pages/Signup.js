@@ -1,14 +1,13 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
-
-export default class Signup extends React.Component {
+import { withRouter, Link } from 'react-router-dom';
+class Signup extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
       email: '',
       password: '',
-      mobile: '',
-      name: ''
+      username: '',
+      mobile: ''
     };
     this.handleInputValue = this.handleInputValue.bind(this);
   }
@@ -60,7 +59,7 @@ export default class Signup extends React.Component {
                   margin: '5px',
                   borderRadius: '5px'
                 }}
-                onChange={this.handleInputValue('name')}
+                onChange={this.handleInputValue('username')}
                 placeholder="이름"
               ></input>
               <input
@@ -96,3 +95,5 @@ export default class Signup extends React.Component {
     );
   }
 }
+
+export default Signup;

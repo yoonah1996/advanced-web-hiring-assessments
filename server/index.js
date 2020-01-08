@@ -11,6 +11,8 @@ const app = express();
 
 const port = 4000;
 
+// TODO : express-session, cors 등 필요한 middleware를 사용하세요.
+
 app.get('/user', userContoroller);
 app.post('/signin', signInController);
 app.post('/signup', signUpController);

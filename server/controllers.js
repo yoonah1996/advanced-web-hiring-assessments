@@ -1,4 +1,4 @@
-const { User } = require('./models');
+const { user } = require('./models');
 module.exports = {
   signInController: (req, res) => {
     // TODO : 로그인 및 인증 부여 로직 작성

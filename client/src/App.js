@@ -1,5 +1,5 @@
 import React from 'react';
-import { Switch, Route, BrowserRouter, Redirect } from 'react-router-dom';
+import { Switch, Route, Redirect } from 'react-router-dom';
 
 import Login from './pages/Login';
 import Signup from './pages/Signup';
@@ -13,33 +13,36 @@ class App extends React.Component {
     const { isLogin } = this.state;
     return (
       <div>
-        <BrowserRouter>
-          <Switch>
-            <Route
-              path="/login"
-              render={() => <Login isLogin={isLogin} />}
-            ></Route>
-            <Route
-              exact
-              path="/signup"
-              render={() => <Signup isLogin={isLogin} />}
-            ></Route>
-            <Route
-              exact
-              path="/mypage"
-              render={() => <Mypage isLogin={isLogin} />}
-            ></Route>
-            <Route
-              path="/"
-              render={() => {
-                if (isLogin) {
-                  return <Redirect to="/mypage" />;
-                }
-                return <Redirect to="/login" />;
-              }}
-            ></Route>
-          </Switch>
-        </BrowserRouter>
+        <Switch>
+          <Route
+            path="/login"
+            render={() => (
+              <Login
+                isLogin={isLogin}
+                handleIsLoginChange={this.handleIsLoginChange.bind(this)}
+              />
+            )}
+          />
+          <Route
+            exact
+            path="/signup"
+            render={() => <Signup isLogin={isLogin} />}
+          />
+          <Route
+            exact
+            path="/mypage"
+            render={() => <Mypage isLogin={isLogin} />}
+          />
+          <Route
+            path="/"
+            render={() => {
+              if (isLogin) {
+                return <Redirect to="/mypage" />;
+              }
+              return <Redirect to="/login" />;
+            }}
+          />
+        </Switch>
       </div>
     );
   }
