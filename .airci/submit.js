@@ -4,7 +4,7 @@ const colors = require('colors');
 // Get sutdent data and test results from student.json & result.json
 let studentInfo = require('../student.json');
 let testResult = require('../results.json');
-let { theClass, student, sprint } = studentInfo;
+let { th, name, sprint } = studentInfo;
 let { numPassedTests, numFailedTests } = testResult;
 
 let [passed, failed] = [numPassedTests, numFailedTests];
@@ -51,9 +51,9 @@ const result = new Promise((resolve, reject) => {
   req.write(
     JSON.stringify({
       fields: {
-        class: theClass,
-        name: student,
-        sprint: sprint,
+        class: th,
+        name,
+        sprint,
         passed,
         failed
       }
