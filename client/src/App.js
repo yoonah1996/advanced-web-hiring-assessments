@@ -14,15 +14,7 @@ class App extends React.Component {
     return (
       <div>
         <Switch>
-          <Route
-            path="/login"
-            render={() => (
-              <Login
-                isLogin={isLogin}
-                handleIsLoginChange={this.handleIsLoginChange.bind(this)}
-              />
-            )}
-          />
+          <Route path="/login" render={() => <Login isLogin={isLogin} />} />
           <Route
             exact
             path="/signup"
