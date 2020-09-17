@@ -23,6 +23,21 @@ class Signup extends React.Component {
             onSubmit={e => {
               e.preventDefault();
               // TODO : 서버에 회원가입을 요청 후 로그인 페이지로 이동 하세요.
+              fetch('http://localhost:4000/signup',{
+                method : 'POST',
+                headers: {
+                  'Accept': 'application/json',
+                  'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(this.state)
+              })
+              .then(res =>{
+                return res.json()
+              })
+              .then(data =>{
+                this.props.history.push('/')
+              })
+              .catch(err => alert("존재하는 회원입니다."))
             }}
           >
             <div>
@@ -96,4 +111,4 @@ class Signup extends React.Component {
   }
 }
 
-export default Signup;
+export default withRouter(Signup);

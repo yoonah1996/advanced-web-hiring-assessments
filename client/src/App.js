@@ -6,15 +6,28 @@ import Signup from './pages/Signup';
 import { Mypage } from './pages/Mypage';
 
 class App extends React.Component {
-  state = {
-    isLogin: false
-  };
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      isLogin: false,
+      userData : null
+    };
+  }
+
+  isLoginToken(data){
+    this.setState({
+      isLogin: true,
+      userData : data
+    })
+  }
+
   render() {
-    const { isLogin } = this.state;
+    const { isLogin, userData } = this.state;
     return (
       <div>
         <Switch>
-          <Route path="/login" render={() => <Login isLogin={isLogin} />} />
+          <Route path="/login" render={() => <Login isLogin={isLogin} isLoginToken = {this.isLoginToken.bind(this)} />} />
           <Route
             exact
             path="/signup"
@@ -23,7 +36,7 @@ class App extends React.Component {
           <Route
             exact
             path="/mypage"
-            render={() => <Mypage isLogin={isLogin} />}
+            render={() => <Mypage isLogin={isLogin} userinfo = {userData}/>}
           />
           <Route
             path="/"
@@ -40,3 +53,4 @@ class App extends React.Component {
   }
 }
 export default App;
+// 

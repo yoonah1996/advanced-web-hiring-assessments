@@ -8,7 +8,7 @@
     "test": "NODE_ENV=test jest --json --outputFile=results.json",
     "client-start": "webpack-dev-server --hot --open",
     "server-start": "nodemon server/index.js",
-    "pre-test" : "node __test__/preTest.js",
+    "pre-test": "node __test__/preTest.js",
     "check": "node .airci/submit.js",
     "submit": "npm-run-all -s --silent pre-test check"
   },
@@ -45,8 +45,11 @@
   "dependencies": {
     "@material-ui/core": "^4.8.2",
     "@material-ui/icons": "^4.5.1",
+    "body-parser": "^1.19.0",
     "colors": "^1.4.0",
+    "cors": "^2.8.5",
     "express": "^4.17.1",
+    "express-session": "^1.17.0",
     "react": "^16.12.0",
     "react-dom": "^16.12.0",
     "react-router-dom": "^5.1.2",

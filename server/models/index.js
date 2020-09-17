@@ -9,6 +9,9 @@ const config = require(__dirname + '/../config/config.json')[env];
 const db = {};
 
 let sequelize;
+// console.log(config.storage);
+// console.log(config.username);
+// console.log(config.password);
 if (config.use_env_variable) {
   sequelize = new Sequelize(process.env[config.use_env_variable], config);
 } else {
@@ -19,7 +22,8 @@ if (config.use_env_variable) {
     config
   );
 }
-
+// sequelize.sync({ alter: true });
+//{ alter: true }
 fs.readdirSync(__dirname)
   .filter(file => {
     return (

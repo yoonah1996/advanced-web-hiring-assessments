@@ -18,11 +18,30 @@ class Login extends React.Component {
     return (
       <div>
         <center>
-          <h1>Sign In</h1>
+          <h1>Sign In</h1>=
           <form
             onSubmit={e => {
               e.preventDefault();
               // TODO : 서버에 로그인 요청 후 처리하세요.
+              fetch('http://localhost:4000/signin',{
+                method : 'POST',
+                headers: {
+                  'Accept': 'application/json',
+                  'Content-Type': 'application/json'
+
+                },
+                body: JSON.stringify(this.state)
+              })
+              .then(res => {
+                return res.json()
+              } )
+              .then(data =>{
+                if(data !== null){
+                  this.props.isLoginToken(data)
+                  this.props.history.push('/')
+                }
+              })
+              .catch(err => alert("틀린 정보입니다."))
             }}
           >
             <div>
@@ -64,6 +83,7 @@ class Login extends React.Component {
               }}
               type="submit"
             >
+              
               로그인
             </button>
           </form>
@@ -73,4 +93,4 @@ class Login extends React.Component {
   }
 }
 
-export default Login;
+export default withRouter(Login);

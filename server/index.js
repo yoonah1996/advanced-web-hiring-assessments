@@ -1,4 +1,7 @@
 const express = require('express');
+const cors = require('cors');
+var bodyParser = require('body-parser');
+const session = require('express-session');
 require('./models');
 
 const {
@@ -12,6 +15,15 @@ const app = express();
 const port = 4000;
 
 // TODO : express-session, cors 등 필요한 middleware를 사용하세요.
+app.use(cors());
+app.use(bodyParser.json());
+app.use(session({
+  secret: 'keyboard cat',
+  resave: false,
+  saveUninitialized: true,
+}));
+// cookie: { secure: true } //==> 
+
 
 app.get('/user', userContoroller);
 app.post('/signin', signInController);

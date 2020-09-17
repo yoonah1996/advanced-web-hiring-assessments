@@ -1,5 +1,20 @@
 import React from 'react';
 
-export function Mypage() {
-  // TODO : MYpage에 로그인 상태에 따라 username, email, mobile 의 정보를 구현하세요.
+export function Mypage(props) {
+  if (props.isLogin === true) {
+    return (
+      <div>
+        <h1>Mypage</h1>
+        <div className='username'>{props.userinfo.username}</div>
+        <div className='email'>{props.userinfo.email}</div>
+        <div className='mobile'>{props.userinfo.mobile}</div>
+      </div>
+    )
+  } else {
+    return (
+      <div>
+        <h1>NOT FOUND</h1>
+      </div>
+    )
+  }
 }
